@@ -14,9 +14,14 @@ from bs4 import BeautifulSoup
 import time
 from html2text import  HTML2Text, config as html2text_config
 import urllib.request
+from dotenv import load_dotenv
 
-openai.api_key = "" # os.getenv('CHIMERA_GPT_KEY')
-openai.api_base = "http://127.0.0.1:1337"
+# Load environment variables from .env file
+load_dotenv()
+
+# Set OpenAI API key and base URL
+openai.api_key = os.getenv("OPENAI_KEY") 
+openai.api_base = os.getenv("OPENAI_BASE")
 def sdxl(prompt):
     response = openai.Image.create(
     model="sdxl",
